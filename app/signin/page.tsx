@@ -1,4 +1,10 @@
+'use client'
+import { useState } from "react";
+
 export default function SignIn() {
+
+    const [isSignUp, setIsSignUp] = useState(false);
+
     return (
       <div className="twcontainer">
         <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-64 md:h-[300px] twflex flex-col">
@@ -39,7 +45,9 @@ export default function SignIn() {
               </div>
             </form>
             <div className="font-light text-blue-500">
-                <button>Don&apos;t have an account yet? Sign Up</button>
+                <button onClick={()=> setIsSignUp((prev) => !prev)}>
+                    {isSignUp? "Don't have an account yet? Sign Up": "Sign-in"}
+                </button>
             </div>
           </div>
         </div>
