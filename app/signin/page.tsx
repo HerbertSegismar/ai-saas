@@ -41,12 +41,12 @@ export default function SignIn() {
                 />
               </div>
               <div className="twflex mx-auto bg-blue-500 text-slate-100 w-20 h-10 rounded-lg font-normal">
-                <button type="submit">Sign In</button>
+                <button type="submit">{isSignUp? "Sign Up" : "Sign In"}</button>
               </div>
             </form>
             <div className="font-light text-blue-500">
                 <button onClick={()=> setIsSignUp((prev) => !prev)}>
-                    {isSignUp? "Don't have an account yet? Sign Up": "Sign-in"}
+                    {isSignUp? "Already have an Account? Sign-in": "Don't have an account yet? Sign Up"}
                 </button>
             </div>
           </div>
