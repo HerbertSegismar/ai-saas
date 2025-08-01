@@ -12,7 +12,7 @@ export default function SignIn() {
           </div>
           <div className="twflex">
             <form action="">
-              <div className="mb-2 twflex gap-5">
+              <div className="mb-2 twflex gap-5 font-light">
                 <label>Email Address</label>
                 <input
                   id="email"
@@ -20,10 +20,10 @@ export default function SignIn() {
                   type="email"
                   required
                   placeholder="Fill in your email address"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
                 />
               </div>
-              <div className="mb-5 twflex gap-5">
+              <div className="mb-5 twflex gap-5 font-light">
                 <label>Password</label>
                 <input
                   id="password"
@@ -31,7 +31,7 @@ export default function SignIn() {
                   type="password"
                   required
                   placeholder="Enter password"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
                 />
               </div>
               <div className="twflex mx-auto bg-blue-500 text-slate-100 w-20 h-10 rounded-lg font-normal">
