@@ -1,16 +1,16 @@
 export default function SignIn() {
     return (
       <div className="twcontainer">
-        <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-80 md:w-[500px] h-64 md:h-[300px] twflex flex-col">
+        <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-64 md:h-[300px] twflex flex-col">
           <div>
-            <h1 className="text-amber-500 text-2xl md:text-4xl">
+            <h1 className="text-amber-500 text-2xl md:text-3xl">
               Personalized AI Newsletter
             </h1>
             <p className=" text-blue-400 font-extralight text-center text-lg md:text-xl mb-5">
               Sign-in to your Account
             </p>
           </div>
-          <div className="twflex">
+          <div className="twflex flex-col gap-2">
             <form action="">
               <div className="mb-2 twflex gap-5 font-light">
                 <label>Email Address</label>
@@ -38,6 +38,9 @@ export default function SignIn() {
                 <button type="submit">Sign In</button>
               </div>
             </form>
+            <div className="font-light text-blue-500">
+                <button>Don't have an account yet? Sign Up</button>
+            </div>
           </div>
         </div>
       </div>
