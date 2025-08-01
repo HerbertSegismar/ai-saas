@@ -39,7 +39,7 @@ export default function SignIn() {
               </div>
             </form>
             <div className="font-light text-blue-500">
-                <button>Don't have an account yet? Sign Up</button>
+                <button>Don&apos;t have an account yet? Sign Up</button>
             </div>
           </div>
         </div>
