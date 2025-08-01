@@ -40,7 +40,7 @@ export default function SignIn() {
                   className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
                 />
               </div>
-              <div className="twflex mx-auto bg-blue-500 text-slate-100 w-20 h-10 rounded-lg font-normal">
+              <div className="twflex mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal">
                 <button type="submit">{isSignUp? "Sign-Up" : "Sign-In"}</button>
               </div>
             </form>
