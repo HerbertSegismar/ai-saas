@@ -13,7 +13,7 @@ export default function SignIn() {
               Personalized AI Newsletter
             </h1>
             <p className=" text-blue-400 font-extralight text-center text-lg md:text-xl mb-5">
-              Sign-in to your Account
+              {isSignUp? "Sign-up to recieve our Newsletters": "Sign-in to your Account"}
             </p>
           </div>
           <div className="twflex flex-col gap-2">
@@ -41,12 +41,12 @@ export default function SignIn() {
                 />
               </div>
               <div className="twflex mx-auto bg-blue-500 text-slate-100 w-20 h-10 rounded-lg font-normal">
-                <button type="submit">{isSignUp? "Sign Up" : "Sign In"}</button>
+                <button type="submit">{isSignUp? "Sign-Up" : "Sign-In"}</button>
               </div>
             </form>
             <div className="font-light text-blue-500">
                 <button onClick={()=> setIsSignUp((prev) => !prev)}>
-                    {isSignUp? "Already have an Account? Sign-in": "Don't have an account yet? Sign Up"}
+                    {isSignUp? "Already have an Account? Sign-in": "Don't have an account yet? Sign-up"}
                 </button>
             </div>
           </div>
