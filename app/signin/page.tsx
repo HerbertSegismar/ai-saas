@@ -23,27 +23,29 @@ export default function SignIn() {
           `A confirmation link has been sent to ${email}. Check your email and click the confirmation link.`
         );
       } else {
-        // First check if user exists
-        const { data: userData, error: userError } = await supabase
-          .from("users")
-          .select("email")
-          .eq("email", email)
-          .single();
-
-        if (userError || !userData) {
-          setMessage("User not found. Please create your account first.");
-          return;
-        }
-
+        // Attempt to sign in directly
         const { error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
-        if (error) throw error;
-        router.push("/dashboard");
+
+        if (error) {
+          // Check if the error is due to user not found
+          if (error.message.includes("Invalid login credentials")) {
+            setMessage("Invalid email or password. Please try again. Create Account by clicking Sign-up if you have not signed up yet.");
+          } else {
+            throw error;
+          }
+        } else {
+          router.push("/dashboard");
+        }
       }
     } catch (error) {
-      setMessage(error instanceof Error? error.message : "An error occurred during authentication.");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "An error occurred during authentication."
+      );
     }
   }
 
@@ -51,7 +53,7 @@ export default function SignIn() {
     <div className="twcontainer">
       {message && (
         <div
-          className={`border rounded-md p-4 m-4 ${
+          className={`border rounded-md p-4 m-4 text-center ${
             message.includes("confirmation") || message.includes("success")
               ? "bg-green-50 border-green-200 text-green-600"
               : "bg-red-50 border-red-200 text-red-600"
@@ -80,7 +82,6 @@ export default function SignIn() {
                 name="email"
                 type="email"
                 value={email}
-                autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Fill in your email address"
