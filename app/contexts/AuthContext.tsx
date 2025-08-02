@@ -33,7 +33,7 @@ export function AuthProvider({children}: {children: ReactNode}) {
         return () => {
             subscription.unsubscribe();
         }
-    }, [])
+    }, [supabase.auth])
 
     async function signOut() {
         await supabase.auth.signOut()

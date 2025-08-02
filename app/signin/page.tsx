@@ -42,8 +42,8 @@ export default function SignIn() {
         if (error) throw error;
         router.push("/dashboard");
       }
-    } catch (error: any) {
-      setMessage(error.message || "An error occurred during authentication.");
+    } catch (error) {
+      setMessage(error instanceof Error? error.message : "An error occurred during authentication.");
     }
   }
 
