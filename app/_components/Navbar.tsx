@@ -26,7 +26,7 @@ export default function Navbar() {
       <div>
         <button
           onClick={handleLogout}
-          className="bg-blue-500 w-20 h-10 rounded-xl cursor-pointer hover:bg-blue-500/70"
+          className="bg-blue-500 w-20 h-10 rounded-xl cursor-pointer hover:bg-blue-500/70 active:scale-90 twtransition"
         >
           Sign Out
         </button>
