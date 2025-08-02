@@ -38,7 +38,7 @@ body {
 }
 
 .twcontainer {
-  @apply w-screen h-[100dvh] flex flex-col items-center justify-center m-auto;
+  @apply w-screen min-h-screen h-[100dvh] flex flex-col items-center justify-center m-auto;
 }
 
 .twtransition {
