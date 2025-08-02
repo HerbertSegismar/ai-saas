@@ -78,30 +78,38 @@ export default function SignIn() {
         <div className="twflex flex-col gap-2">
           <form onSubmit={handleAuth}>
             <div className="mb-2 twflex gap-5 font-light">
-              <label htmlFor="email">Email Address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Fill in your email address"
-                className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
-              />
+              <div className="w-full">
+                <label htmlFor="email">Email Address</label>
+              </div>
+              <div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Fill in your email address"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
+                />
+              </div>
             </div>
-            <div className="mb-5 twflex gap-5 font-light">
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                placeholder="Enter password"
-                className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
-              />
+            <div className="mb-5 twflex gap-5 font-light ">
+              <div className="w-full">
+                <label htmlFor="password">Password</label>
+              </div>
+              <div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Enter password"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
+                />
+              </div>
             </div>
             <div className="twflex mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal hover:scale-105 twtransition active:scale-90">
               <button onClick={handleAuth} type="submit">
