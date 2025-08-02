@@ -122,7 +122,10 @@ export default function SignIn() {
             </div>
           </form>
           <div className="font-light text-blue-500">
-            <button onClick={() => setIsSignUp((prev) => !prev)}>
+            <button
+              className="underline cursor-pointer hover:text-green-600 twtransition"
+              onClick={() => setIsSignUp((prev) => !prev)}
+            >
               {isSignUp
                 ? "Already have an Account? Sign-in"
                 : "Don't have an account yet? Sign-up"}
