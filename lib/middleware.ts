@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function updateSession(request: NextRequest) {
-  let response = NextResponse.next({
+  let supabaseResponse = NextResponse.next({
     request,
   });
 
@@ -11,59 +11,81 @@ export async function updateSession(request: NextRequest) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name: string) {
-          return request.cookies.get(name)?.value;
+        getAll() {
+          return request.cookies.getAll();
         },
-        set(name: string, value: string, options: any) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            request.cookies.set(name, value)
+          );
+          supabaseResponse = NextResponse.next({
+            request,
           });
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name: string, options: any) {
-          request.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-          response.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          );
         },
       },
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Do not run code between createServerClient and
+  // supabase.auth.getUser(). A simple mistake could make it very hard to debug
+  // issues with users being randomly logged out.
 
-  // Define protected and public routes
-  const protectedRoutes = ["/dashboard"];
-  const publicRoutes = ["/", "/signin"];
+  // IMPORTANT: DO NOT REMOVE auth.getUser()
 
-  // Handle redirects based on authentication status
-  if (user) {
-    if (publicRoutes.includes(request.nextUrl.pathname)) {
-      const url = request.nextUrl.clone();
-      url.pathname = "/dashboard";
-      return NextResponse.redirect(url);
-    }
-  } else {
-    if (protectedRoutes.includes(request.nextUrl.pathname)) {
-      const url = request.nextUrl.clone();
-      url.pathname = "/signin";
-      return NextResponse.redirect(url);
-    }
-  }
+const {
+  data: { user },
+} = await supabase.auth.getUser();
 
-  return response;
+if (request.nextUrl.pathname === "/" && user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/dashboard";
+  return NextResponse.redirect(url);
+} 
+
+if (request.nextUrl.pathname === "/signin" && user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/dashboard";
+  return NextResponse.redirect(url);
+} 
+
+if (request.nextUrl.pathname === "/" && !user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/signin";
+  return NextResponse.redirect(url);
+} 
+
+if (request.nextUrl.pathname === "/" && !user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/signin";
+  return NextResponse.redirect(url);
+} 
+
+//   if (
+//     !user &&
+//     !request.nextUrl.pathname.startsWith("/login") &&
+//     !request.nextUrl.pathname.startsWith("/auth")
+//   ) {
+//     // no user, potentially respond by redirecting the user to the login page
+//     const url = request.nextUrl.clone();
+//     url.pathname = "/login";
+//     return NextResponse.redirect(url);
+//   }
+
+  // IMPORTANT: You *must* return the supabaseResponse object as it is.
+  // If you're creating a new response object with NextResponse.next() make sure to:
+  // 1. Pass the request in it, like so:
+  //    const myNewResponse = NextResponse.next({ request })
+  // 2. Copy over the cookies, like so:
+  //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
+  // 3. Change the myNewResponse object to fit your needs, but avoid changing
+  //    the cookies!
+  // 4. Finally:
+  //    return myNewResponse
+  // If this is not done, you may be causing the browser and server to go out
+  // of sync and terminate the user's session prematurely!
+
+  return supabaseResponse;
 }
