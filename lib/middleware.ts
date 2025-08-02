@@ -39,13 +39,10 @@ const {
   data: { user },
 } = await supabase.auth.getUser();
 
-if (request.nextUrl.pathname === "/" && user) {
-  const url = request.nextUrl.clone();
-  url.pathname = "/dashboard";
-  return NextResponse.redirect(url);
-} 
-
-if (request.nextUrl.pathname === "/signin" && user) {
+if (
+  user && request.nextUrl.pathname === ("/") || 
+  user && request.nextUrl.pathname === ("/signin")
+) {
   const url = request.nextUrl.clone();
   url.pathname = "/dashboard";
   return NextResponse.redirect(url);

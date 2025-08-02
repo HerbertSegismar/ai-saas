@@ -32,7 +32,9 @@ export default function SignIn() {
         if (error) {
           // Check if the error is due to user not found
           if (error.message.includes("Invalid login credentials")) {
-            setMessage("Invalid email or password. Please try again. Create Account by clicking Sign-up if you have not signed up yet.");
+            setMessage(
+              "Invalid email or password. Please try again or Create Account by clicking Sign-up if you have not signed up yet."
+            );
           } else {
             throw error;
           }

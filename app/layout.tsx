@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <AuthProvider>
           <Navbar />
-          {children}
+          <div className="twflex min-h-screen w-screen">{children}</div>
         </AuthProvider>
       </body>
     </html>
