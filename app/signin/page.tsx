@@ -90,7 +90,7 @@ export default function SignIn() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Fill in your email address"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
                 />
               </div>
             </div>
@@ -107,12 +107,16 @@ export default function SignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Enter password"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
                 />
               </div>
             </div>
-            <div className="twflex mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal hover:scale-105 twtransition active:scale-90">
-              <button onClick={handleAuth} type="submit">
+            <div className="twflex cursor-pointer mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal hover:scale-105 twtransition active:scale-90">
+              <button
+                onClick={handleAuth}
+                type="submit"
+                className="cursor-pointer"
+              >
                 {isSignUp ? "Create Account" : "Sign-In"}
               </button>
             </div>
