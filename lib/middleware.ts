@@ -39,15 +39,27 @@ const {
   data: { user },
 } = await supabase.auth.getUser();
 
-if (request.nextUrl.pathname === "/") {
+if (request.nextUrl.pathname === "/" && user) {
   const url = request.nextUrl.clone();
-  url.pathname = "/signin";
+  url.pathname = "/dashboard";
   return NextResponse.redirect(url);
-}
+} 
 
 if (request.nextUrl.pathname === "/signin" && user) {
   const url = request.nextUrl.clone();
   url.pathname = "/dashboard";
+  return NextResponse.redirect(url);
+} 
+
+if (request.nextUrl.pathname === "/" && !user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/signin";
+  return NextResponse.redirect(url);
+} 
+
+if (request.nextUrl.pathname === "/dashboard" && !user) {
+  const url = request.nextUrl.clone();
+  url.pathname = "/signin";
   return NextResponse.redirect(url);
 } 
 

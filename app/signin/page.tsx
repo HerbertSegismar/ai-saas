@@ -7,8 +7,10 @@ export default function SignIn() {
 
     const [isSignUp, setIsSignUp] = useState(false);
     const [email, setEmail] = useState("");
+
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+
     const router = useRouter();
     const supabase = createClient();
 
@@ -53,7 +55,7 @@ export default function SignIn() {
           <div className="twflex flex-col gap-2">
             <form onSubmit={handleAuth}>
               <div className="mb-2 twflex gap-5 font-light">
-                <label>Email Address</label>
+                <label htmlFor="email">Email Address</label>
                 <input
                   id="email"
                   name="email"
@@ -66,7 +68,7 @@ export default function SignIn() {
                 />
               </div>
               <div className="mb-5 twflex gap-5 font-light">
-                <label>Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                   id="password"
                   name="password"
@@ -78,8 +80,8 @@ export default function SignIn() {
                   className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm"
                 />
               </div>
-              <div className="twflex mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal">
-                <button type="submit">
+              <div className="twflex mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal hover:scale-105 twtransition">
+                <button onClick={handleAuth} type="submit">
                   {isSignUp ? "Create Account" : "Sign-In"}
                 </button>
               </div>

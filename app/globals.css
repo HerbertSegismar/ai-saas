@@ -41,3 +41,7 @@ body {
   @apply w-screen h-[100dvh] flex flex-col items-center justify-center m-auto;
 }
 
+.twtransition {
+  @apply transition-all duration-300 ease-in-out
+}
+
