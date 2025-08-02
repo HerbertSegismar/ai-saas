@@ -80,6 +80,7 @@ export default function SignIn() {
                 name="email"
                 type="email"
                 value={email}
+                autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="Fill in your email address"
