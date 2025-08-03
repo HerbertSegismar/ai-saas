@@ -73,7 +73,7 @@ export default function SignIn() {
             <h1 className="text-amber-500 text-2xl md:text-3xl drop-shadow">
               Personalized AI Newsletter
             </h1>
-            <p className=" text-blue-500 font-extralight text-center text-lg md:text-xl mb-5">
+            <p className=" text-blue-500 font-extralight text-center text-lg md:text-xl mb-5 drop-shadow">
               {isSignUp
                 ? "Sign-up to receive our Newsletters"
                 : "Sign-in to your Account"}
