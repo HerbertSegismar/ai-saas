@@ -2,12 +2,15 @@
 import { createClient } from "@/lib/client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+
 
 export default function SignIn() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
   const supabase = createClient();
@@ -98,25 +101,33 @@ export default function SignIn() {
               <div className="w-full">
                 <label htmlFor="password">Password</label>
               </div>
-              <div>
+              <div className="relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Enter password"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
+                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none pr-8"
                 />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeSlashIcon className="h-4 w-4" /> // Eye with slash icon
+                  ) : (
+                    <EyeIcon className="h-4 w-4" /> // Regular eye icon
+                  )}
+                </button>
               </div>
             </div>
             <div className="twflex cursor-pointer mx-auto bg-blue-500 text-slate-100 w-full h-10 rounded-lg font-normal hover:scale-105 twtransition active:scale-90">
-              <button
-                onClick={handleAuth}
-                type="submit"
-                className="cursor-pointer"
-              >
+              <button type="submit" className="cursor-pointer">
                 {isSignUp ? "Create Account" : "Sign-In"}
               </button>
             </div>
@@ -136,3 +147,4 @@ export default function SignIn() {
     </div>
   );
 }
+

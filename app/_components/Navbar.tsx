@@ -42,7 +42,7 @@ export default function Navbar() {
           AI Newsletter
         </p>
       </div>
-      <div className="flex-row twflex gap-4">
+      <div className="twflex gap-4">
         <p className="font-thin text-sm hidden md:block">
           Welcome, {user?.email}
         </p>
