@@ -74,7 +74,7 @@ export default function SignIn() {
           </h1>
           <p className=" text-blue-400 font-extralight text-center text-lg md:text-xl mb-5">
             {isSignUp
-              ? "Sign-up to recieve our Newsletters"
+              ? "Sign-up to receive our Newsletters"
               : "Sign-in to your Account"}
           </p>
         </div>
@@ -114,14 +114,14 @@ export default function SignIn() {
                 />
                 <button
                   type="button"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  className="absolute cursor-pointer right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-4 w-4" /> // Eye with slash icon
+                    <EyeSlashIcon className="h-4 w-4" />
                   ) : (
-                    <EyeIcon className="h-4 w-4" /> // Regular eye icon
+                    <EyeIcon className="h-4 w-4" />
                   )}
                 </button>
               </div>
