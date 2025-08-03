@@ -66,9 +66,9 @@ export default function SignIn() {
           <p className="text-sm">{message}</p>
         </div>
       )}
-      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-80 md:h-[350px] twflex flex-col">
+      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-96 md:h-[400px] twflex flex-col">
         <div className="twflex relative">
-          <div className="newsIcon bg-blue-500/20 top-[-375%]" />
+          <div className="newsIcon bg-blue-500/20 top-[-378%] md:top-[-360%]" />
           <div>
             <h1 className="text-amber-500 text-2xl md:text-3xl drop-shadow">
               Personalized AI Newsletter
@@ -136,7 +136,7 @@ export default function SignIn() {
           </form>
           <div className="font-light text-blue-500">
             <button
-              className="underline cursor-pointer hover:text-green-600 twtransition"
+              className="underline cursor-pointer mt-4 hover:text-green-600 twtransition"
               onClick={() => setIsSignUp((prev) => !prev)}
             >
               {isSignUp
