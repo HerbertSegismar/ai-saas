@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
-
 export default function SignIn() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [email, setEmail] = useState("");
@@ -67,16 +66,19 @@ export default function SignIn() {
           <p className="text-sm">{message}</p>
         </div>
       )}
-      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-64 md:h-[300px] twflex flex-col">
-        <div>
-          <h1 className="text-amber-500 text-2xl md:text-3xl">
-            Personalized AI Newsletter
-          </h1>
-          <p className=" text-blue-400 font-extralight text-center text-lg md:text-xl mb-5">
-            {isSignUp
-              ? "Sign-up to receive our Newsletters"
-              : "Sign-in to your Account"}
-          </p>
+      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-80 md:h-[350px] twflex flex-col">
+        <div className="twflex relative">
+          <div className="newsIcon bg-blue-500/20 top-[-375%]" />
+          <div>
+            <h1 className="text-amber-500 text-2xl md:text-3xl drop-shadow">
+              Personalized AI Newsletter
+            </h1>
+            <p className=" text-blue-500 font-extralight text-center text-lg md:text-xl mb-5">
+              {isSignUp
+                ? "Sign-up to receive our Newsletters"
+                : "Sign-in to your Account"}
+            </p>
+          </div>
         </div>
         <div className="twflex flex-col gap-2">
           <form onSubmit={handleAuth}>
