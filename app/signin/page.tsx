@@ -66,9 +66,9 @@ export default function SignIn() {
           <p className="text-sm">{message}</p>
         </div>
       )}
-      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[500px] h-96 md:h-[400px] twflex flex-col">
+      <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[450px] h-96 md:h-[450px] twflex flex-col">
         <div className="twflex relative">
-          <div className="newsIcon bg-blue-500/20 top-[-378%] md:top-[-360%]" />
+          <div className="newsIcon bg-blue-500/10 top-[-378%] md:top-[-360%]" />
           <div>
             <h1 className="text-amber-500 text-2xl md:text-3xl drop-shadow">
               Personalized AI Newsletter
@@ -83,7 +83,7 @@ export default function SignIn() {
         <div className="twflex flex-col gap-2">
           <form onSubmit={handleAuth}>
             <div className="mb-2 twflex gap-5 font-light">
-              <div className="w-full">
+              <div className="w-full text-md md:text-lg">
                 <label htmlFor="email">Email Address</label>
               </div>
               <div>
@@ -95,12 +95,12 @@ export default function SignIn() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Fill in your email address"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
+                  className="border border-blue-300 rounded-sm w-48 h-8 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
                 />
               </div>
             </div>
             <div className="mb-5 twflex gap-5 font-light ">
-              <div className="w-full">
+              <div className="w-full text-md md:text-lg">
                 <label htmlFor="password">Password</label>
               </div>
               <div className="relative">
@@ -112,7 +112,7 @@ export default function SignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Enter password"
-                  className="border border-blue-300 rounded-sm w-48 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none pr-8"
+                  className="border border-blue-300 rounded-sm w-48 h-8 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none pr-8"
                 />
                 <button
                   type="button"
@@ -121,9 +121,9 @@ export default function SignIn() {
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    <EyeSlashIcon className="h-4 w-4" />
+                    <EyeSlashIcon className="size-6" />
                   ) : (
-                    <EyeIcon className="h-4 w-4" />
+                    <EyeIcon className="size-6" />
                   )}
                 </button>
               </div>
