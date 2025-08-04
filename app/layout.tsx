@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { AuthProvider } from "./contexts/AuthContext";
+import Footer from "./_components/Footer";
 
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <AuthProvider>
           <Navbar />
           <div className="twflex min-h-screen w-screen">{children}</div>
+          <Footer/>
         </AuthProvider>
       </body>
     </html>
