@@ -2,6 +2,7 @@
 import { createClient } from "@/lib/client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { motion } from "motion/react"
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 export default function SignIn() {
@@ -56,7 +57,8 @@ export default function SignIn() {
   return (
     <div className="twcontainer">
       {message && (
-        <div
+        <motion.div
+          animate={{y: [-40, 0], opacity: [0, 0.1, 0.3, 1], transition: {duration: 2, ease: "easeInOut"}}}
           className={`border rounded-md p-4 m-4 text-center ${
             message.includes("confirmation") || message.includes("success")
               ? "bg-green-50 border-green-200 text-green-600"
@@ -64,7 +66,7 @@ export default function SignIn() {
           }`}
         >
           <p className="text-sm">{message}</p>
-        </div>
+        </motion.div>
       )}
       <div className="bg-slate-100 shadow-black/50 shadow-md border border-blue-100 rounded-xl w-88 md:w-[450px] h-96 md:h-[450px] twflex flex-col">
         <div className="twflex relative">
@@ -94,6 +96,7 @@ export default function SignIn() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  autoComplete="email"
                   placeholder="Fill in your email address"
                   className="border border-blue-300 rounded-sm w-48 h-8 text-center text-md placeholder:text-sm focus:border-blue-500 outline-none"
                 />
