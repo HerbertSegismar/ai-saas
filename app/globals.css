@@ -55,5 +55,5 @@ body {
 
 .dashboard-card {
   @apply w-[800px] h-[500px] bg-black/60 rounded-4xl text-center scale-50 md:scale-100;
-  clip-path: path("M0 0 800 0 800 500 100 500 A100 100 0 0 1 0 400Z");
+  clip-path: path("M0 0 800 0 800 500 100 500 A100 100 0 0 1 0 400");
 }

@@ -45,10 +45,10 @@ export default function Navbar() {
           AI Newsletter
         </p>
       </div>
-      <div className="hidden md:flex item-center justify-center text-2xl gap-4">
+      <div className="hidden md:flex item-center justify-center text-xl lg:text-3xl gap-4">
         {NavbarData.map((data) => (
           <Link
-            className={`twtransition ${
+            className={`twtransition font-light ${
               data.url === pathname
                 ? "text-blue-300"
                 : "text-amber-300 hover:scale-110"
@@ -60,16 +60,16 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-      <div className="twflex gap-4">
-        <p className="font-thin text-sm hidden md:block">
-          Welcome, {user?.email}
-        </p>
+      <div className="twflex md:flex-col gap-1">
         <button
           onClick={handleLogout}
-          className="bg-blue-500 w-20 h-10 rounded-xl cursor-pointer hover:bg-blue-500/70 active:scale-90 twtransition"
+          className="bg-blue-500 w-18 h-8 md:w-20 md:h-10 text-sm md:text-base rounded-xl cursor-pointer hover:bg-blue-500/70 active:scale-90 twtransition"
         >
           Sign Out
         </button>
+        <p className="font-thin text-sm hidden md:block">
+          Welcome, {user?.email}
+        </p>
       </div>
     </nav>
   );
