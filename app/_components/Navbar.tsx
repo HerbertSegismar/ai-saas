@@ -45,7 +45,7 @@ export default function Navbar() {
           AI Newsletter
         </p>
       </div>
-      <div className="hidden md:block twflex text-2xl gap-4">
+      <div className="hidden md:flex item-center justify-center text-2xl gap-4">
         {NavbarData.map((data) => (
           <Link
             className={`twtransition ${
