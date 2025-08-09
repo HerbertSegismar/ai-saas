@@ -1,14 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { NavbarData } from "./NavbarData";
+import Link from "next/link";
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     await signOut();
@@ -38,9 +41,24 @@ export default function Navbar() {
         >
           <Image src="icon.svg" alt="logo" width={30} height={30}></Image>
         </motion.div>
-        <p className="text-amber-400 text-lg md:text-xl tracking-wider hover:scale-90 twtransition">
+        <p className="text-amber-300 text-lg md:text-xl tracking-wider hover:scale-90 twtransition">
           AI Newsletter
         </p>
+      </div>
+      <div className="hidden md:block twflex text-2xl gap-4">
+        {NavbarData.map((data) => (
+          <Link
+            className={`twtransition ${
+              data.url === pathname
+                ? "text-blue-300"
+                : "text-amber-300 hover:scale-110"
+            }`}
+            key={data.index}
+            href={data.url}
+          >
+            {data.name}
+          </Link>
+        ))}
       </div>
       <div className="twflex gap-4">
         <p className="font-thin text-sm hidden md:block">

@@ -1,3 +1,5 @@
 {
-  "editor.colorDecorators": true
+  "editor.colorDecorators": true,
+  "editor.fontSize": 25,
+  "scm.inputFontSize": 25
 }
